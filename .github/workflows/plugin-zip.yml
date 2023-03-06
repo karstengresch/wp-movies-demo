@@ -11,10 +11,19 @@ jobs:
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
-            - name: Install Compoeser dependencies
+
+            - name: Install Composer dependencies
               run: composer install --no-dev
+
+            - name: Install npm dependencies
+              run: npm ci
+
+            - name: Build plufin
+              run: npm run build
+
             - name: Create ZIP file
-              run: tar czf wpmovies.tar.gz build/ lib/ vendor/ .env wpmovies.php README.md
+              run: tar czf wpmovies.tar.gz build/ lib/ vendor/ wpmovies.php README.md
+
             - name: Upload ZIP file
               uses: actions/upload-artifact@v3
               with:
