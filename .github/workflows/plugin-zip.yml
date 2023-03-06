@@ -1,0 +1,23 @@
+name: Build Plugin ZIP
+
+on:
+    push:
+        branches:
+            - zip-action
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+            - name: Install Compoeser dependencies
+              run: composer install --no-dev
+            - name: Create ZIP file
+              run: tar czf wpmovies.tar.gz build/ lib/ vendor/ .env wpmovies.php README.md
+            - name: Upload ZIP file
+              uses: actions/upload-artifact@v3
+              with:
+                  name: wpmovies
+                  path: wpmovies.tar.gz
+                  target-path: zip-action/
