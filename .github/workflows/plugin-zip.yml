@@ -25,4 +25,4 @@ jobs:
               uses: vimtor/action-zip@v1
               with:
                   files: build/ lib/ vendor/ wpmovies.php README.md
-                  dest: ${{ github.workspace }}wpmovies.zip
+                  dest: wpmovies.zip
