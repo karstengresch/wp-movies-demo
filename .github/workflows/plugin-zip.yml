@@ -18,15 +18,11 @@ jobs:
             - name: Install npm dependencies
               run: npm ci
 
-            - name: Build plufin
+            - name: Build plugin
               run: npm run build
 
             - name: Create ZIP file
-              run: tar czf wpmovies.tar.gz build/ lib/ vendor/ wpmovies.php README.md
-
-            - name: Upload ZIP file
-              uses: actions/upload-artifact@v3
+              uses: vimtor/action-zip@v1
               with:
-                  name: wpmovies
-                  path: wpmovies.tar.gz
-                  target-path: zip-action/
+                  files: build/ lib/ vendor/ wpmovies.php README.md
+                  dest: ${{ github.workspace }}wpmovies.zip
