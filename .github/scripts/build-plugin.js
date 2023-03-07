@@ -12,7 +12,6 @@ archive.directory('vendor/', 'vendor');
 archive.directory('build/', 'build');
 archive.file('README.md', { name: 'README.md' });
 archive.file('wpmovies.php', { name: 'wpmovies.php' });
-archive.file('.env', { name: '.env' });
 
 // Finalize the zip file
 archive.pipe(output);
