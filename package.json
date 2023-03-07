@@ -13,7 +13,9 @@
 		"format:php": "wp-env run composer run-script format",
 		"lint:php": "wp-env run composer run-script lint",
 		"plugin-zip": "wp-scripts plugin-zip",
-		"wp-env": "wp-env"
+		"wp-env": "wp-env",
+		"build-plugin": "node .github/scripts/build-plugin.js",
+		"build-theme": "node .github/scripts/build-theme.js"
 	},
 	"prettier": {
 		"useTabs": true,
@@ -43,6 +45,7 @@
 	"dependencies": {
 		"@preact/signals": "^1.1.2",
 		"@wordpress/i18n": "^4.24.0",
+		"archiver": "^5.3.1",
 		"deepsignal": "^1.0.0",
 		"hpq": "^1.3.0",
 		"preact": "^10.10.6"

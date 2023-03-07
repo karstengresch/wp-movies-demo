@@ -11,6 +11,8 @@ jobs:
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
+              with:
+                  ref: zip-action
 
             - name: Install Composer dependencies
               run: composer install --no-dev
@@ -21,8 +23,16 @@ jobs:
             - name: Build plugin
               run: npm run build
 
-            - name: Create ZIP file
-              uses: vimtor/action-zip@v1
-              with:
-                  files: build/ lib/ vendor/ wpmovies.php README.md
-                  dest: wpmovies.zip
+            - name: Create plugin ZIP file
+              run: npm run build-plugin
+
+            - name: Create theme ZIP file
+              run: npm run build-theme
+
+            - name: Commit changes
+              run: |
+                  git config user.name github-actions[bot]
+                  git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+                  git checkout -b zip-action
+                  git add .
+                  git commit -m "Build plugin and theme zip files"
