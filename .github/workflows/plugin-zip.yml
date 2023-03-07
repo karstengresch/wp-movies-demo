@@ -33,6 +33,6 @@ jobs:
               run: |
                   git config user.name github-actions[bot]
                   git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-                  git checkout zip-action
+                  git branch --show-current
                   git add .
-                  git commit -m "Build plugin and theme zip files"
+                  git status
